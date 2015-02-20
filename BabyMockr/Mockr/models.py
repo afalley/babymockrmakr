@@ -1,3 +1,4 @@
+from django.contrib.auth.tests.test_context_processors import MockUser
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -11,6 +12,7 @@ class MockrUser(AbstractUser):
     is_Mockr = models.BooleanField(default=False)
     is_facebook = models.BooleanField(default=False)
 
+
     def __unicode__(self):
         return self.email
 
@@ -20,10 +22,11 @@ class MockrUser(AbstractUser):
 
 class BabyName(models.Model):
     first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50, blank=True)
-    middle_name = models.CharField(max_length=50, blank=True)
+   # last_name = models.CharField(max_length=50, blank=True)
+   # middle_name = models.CharField(max_length=50, blank=True)
     rank = models.IntegerField(default=0, blank=True)
     mockr_user = models.ForeignKey(MockrUser, related_name='mkuser')
+
 
     def __unicode__(self):
         return ' '.join([self.first_name, self.middle_name, self.last_name])
@@ -31,12 +34,12 @@ class BabyName(models.Model):
 
 class Mock(models.Model):
     mock_text = models.CharField(max_length=400)
-    brutality = models.IntegerField(blank=True, default=0)
-    stupidity = models.IntegerField(blank=True, default=0)
+
     rhyming = models.BooleanField(default=False)
-    funny = models.IntegerField(blank=True, default=0)
     baby_name = models.ForeignKey(BabyName, related_name='babyname')
     mockr_user = models.ForeignKey(MockrUser, related_name='mockruser')
+    is_Parents_favorite = models.BooleanField(default=False)
+
 
     def __unicode__(self):
         return ' '.join([self.mockr_user.username, " - ", self.mock_text])
@@ -50,7 +53,14 @@ class Favorite(models.Model):
     def __unicode__(self):
         return self.mocks.mock_text
 
-
+# class MockRating(models.Model):
+#     brutality = models.IntegerField(blank=True, default=0)
+#     stupidity = models.IntegerField(blank=True, default=0)
+#     funny = models.IntegerField(blank=True, default=0)
+#     overall = models.IntegerField(blank=True, default=0)
+#     mockr_user = models.ForeignKey(MockUser)
+#     mock = models.ForeignKey(Mock)
+#
 
 
 
