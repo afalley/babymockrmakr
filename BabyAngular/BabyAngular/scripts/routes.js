@@ -10,7 +10,13 @@ angular
       // This route should use the following controller for it's view.
       controller: 'DemoRouteController'
     });
-    
+    // Our second route, which specifies a parameter.  Found at /#/demo/[Animal]
+    $routeProvider.when('/demo/:animal', {
+      // This route should use the following HTML for its template view.
+      templateUrl: 'templates/demoRoute2.html',
+      // This route should use the following controller for it's view.
+      controller: 'DemoRouteController2'
+    });
 
    // $routeProvider.when('/demod', {
       // This route should use the following HTML for its template view.

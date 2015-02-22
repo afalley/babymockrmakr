@@ -10,7 +10,7 @@ angular.module('myApp')
     // The rest of the function defines th e behavior & data that the controller will manage.
     // Let's look up Github repositories that belong to Tivix
   //  Tools.authGithub();
-    var repos_request = $http.post("http://localhost:8000/Mocks");
+    var repos_request = $http.get("http://localhost:8000/Mocks");
     // If we successfully retrieve them, then let's add them to the scope.
     repos_request.success(function(data){
       $scope.items = data;
