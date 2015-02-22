@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 __author__ = 'andreasfalley'
 
 from rest_framework.views import APIView, Response
-from Mockr.api.serializers import MockrUserSerializer, MocksSerializer, BabyNameSerializer, BabyMocksSerializer
+from Mockr.api.serializers import MockrUserSerializer, MocksSerializer, BabyNameSerializer
 from Mockr.models import MockrUser, Mock
 from django.http import HttpResponse
 from rest_framework.renderers import JSONRenderer

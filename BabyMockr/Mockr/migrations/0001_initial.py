@@ -18,9 +18,7 @@ class Migration(migrations.Migration):
             name='BabyName',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('first_name', models.CharField(max_length=50)),
-                ('last_name', models.CharField(max_length=50, blank=True)),
-                ('middle_name', models.CharField(max_length=50, blank=True)),
+                ('name', models.CharField(max_length=50)),
                 ('rank', models.IntegerField(default=0, blank=True)),
             ],
             options={
@@ -42,11 +40,23 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('mock_text', models.CharField(max_length=400)),
-                ('brutality', models.IntegerField(default=0, blank=True)),
-                ('stupidity', models.IntegerField(default=0, blank=True)),
                 ('rhyming', models.BooleanField(default=False)),
-                ('funny', models.IntegerField(default=0, blank=True)),
-                ('baby_name', models.ForeignKey(to='Mockr.BabyName')),
+                ('is_parents_favorite', models.BooleanField(default=False)),
+                ('baby_name', models.ForeignKey(related_name='babyname', to='Mockr.BabyName')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='MockRating',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('brutality', models.IntegerField(default=0)),
+                ('stupidity', models.IntegerField(default=0)),
+                ('funny', models.IntegerField(default=0)),
+                ('overall', models.IntegerField(default=0, blank=True)),
+                ('mock', models.ForeignKey(to='Mockr.Mock')),
             ],
             options={
             },
@@ -81,9 +91,15 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.AddField(
-            model_name='mock',
+            model_name='mockrating',
             name='mockr_user',
             field=models.ForeignKey(to=settings.AUTH_USER_MODEL),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='mock',
+            name='mockr_user',
+            field=models.ForeignKey(related_name='mockruser', to=settings.AUTH_USER_MODEL),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -101,7 +117,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='babyname',
             name='mockr_user',
-            field=models.ForeignKey(to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(related_name='mkuser', to=settings.AUTH_USER_MODEL),
             preserve_default=True,
         ),
     ]

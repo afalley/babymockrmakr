@@ -21,9 +21,9 @@ class MockrUser(AbstractUser):
 
 
 class BabyName(models.Model):
-    first_name = models.CharField(max_length=50)
-   # last_name = models.CharField(max_length=50, blank=True)
-   # middle_name = models.CharField(max_length=50, blank=True)
+    name = models.CharField(max_length=50)
+    # last_name = models.CharField(max_length=50, blank=True)
+    # middle_name = models.CharField(max_length=50, blank=True)
     rank = models.IntegerField(default=0, blank=True)
     mockr_user = models.ForeignKey(MockrUser, related_name='mkuser')
 
@@ -38,7 +38,7 @@ class Mock(models.Model):
     rhyming = models.BooleanField(default=False)
     baby_name = models.ForeignKey(BabyName, related_name='babyname')
     mockr_user = models.ForeignKey(MockrUser, related_name='mockruser')
-    is_Parents_favorite = models.BooleanField(default=False)
+    is_parents_favorite = models.BooleanField(default=False)
 
 
     def __unicode__(self):
@@ -53,14 +53,14 @@ class Favorite(models.Model):
     def __unicode__(self):
         return self.mocks.mock_text
 
-# class MockRating(models.Model):
-#     brutality = models.IntegerField(blank=True, default=0)
-#     stupidity = models.IntegerField(blank=True, default=0)
-#     funny = models.IntegerField(blank=True, default=0)
-#     overall = models.IntegerField(blank=True, default=0)
-#     mockr_user = models.ForeignKey(MockUser)
-#     mock = models.ForeignKey(Mock)
-#
+class MockRating(models.Model):
+    brutality = models.IntegerField(default=0)
+    stupidity = models.IntegerField(default=0)
+    funny = models.IntegerField(default=0)
+    overall = models.IntegerField(blank=True, default=0)
+    mockr_user = models.ForeignKey(MockrUser)
+    mock = models.ForeignKey(Mock)
+
 
 
 
