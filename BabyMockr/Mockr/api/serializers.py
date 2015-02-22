@@ -24,7 +24,7 @@ class BabyNameSerializer(serializers.ModelSerializer):
 
 class MocksSerializer(serializers.ModelSerializer):
 
-    baby_name = serializers.SlugRelatedField(slug_field='first_name', read_only=True)
+    baby_name = serializers.SlugRelatedField(slug_field='name', read_only=True)
 
     class Meta:
         model = Mock
