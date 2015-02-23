@@ -9,11 +9,11 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^MockrUser/', ListMockrUsers.as_view()),
+    url(r'^mockrusers/', ListMockrUsers.as_view()),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^Mocks/', ListMocks().as_view()),
-    url(r'^BabyName', ListBabyNames.as_view()),
-    url(r'^MockRatings', ListMockRatings.as_view()),
-    url(r'^ListFavorites',ListFavorites.as_view()),
+    url(r'^mocks/', ListMocks().as_view()),
+    url(r'^babynames/', ListBabyNames.as_view()),
+    url(r'^mockratings/', ListMockRatings.as_view()),
+    url(r'^favorites/',ListFavorites.as_view()),
 
 )

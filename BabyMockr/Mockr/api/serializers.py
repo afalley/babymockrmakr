@@ -2,7 +2,7 @@ from Mockr.models import MockRating
 
 __author__ = 'andreasfalley'
 
-from django.forms import widgets
+
 from rest_framework import serializers
 
 
@@ -13,20 +13,24 @@ class MockrUserSerializer(serializers.Serializer):
 
     class Meta:
         model = MockrUser
-        fields = ('mockr_username', 'first_name', 'last_name', 'username',
-                  'is_admin', 'created_at', 'updated_at', 'email', 'is_mockr', 'is_facebook')
+        fields = ('mockr_username')
 
 class BabyNameSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = BabyName
         fields = ('name', 'rank', 'mockr_user')
+class BabyNameSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BabyName
+        fields = ('name', 'rank', 'mockr_user')
+
 
 class MocksSerializer(serializers.ModelSerializer):
 
     # mockr_user = serializers.SlugRelatedField(slug_field='mockruser', read_only=True)
     baby_name = serializers.SlugRelatedField(slug_field='name', read_only=True)
-
 
     class Meta:
         model = Mock
@@ -47,18 +51,9 @@ class FavoriteSerializer(serializers.ModelSerializer):
 #         model = Mock,
 #         fields = ('mock_text', 'rhyming', 'bn' )
 
+
 class MockRatingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MockRating
         fields = ('brutality', 'stupidity', 'funny', 'overall')
-
-
-
-
-
-
-
-
-
-

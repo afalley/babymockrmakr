@@ -1,6 +1,6 @@
 from django.contrib.auth.tests.test_context_processors import MockUser
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, AbstractBaseUser
 
 
 # Create your models here.
@@ -56,6 +56,8 @@ class MockRating(models.Model):
     overall = models.IntegerField(blank=True, default=0)
     mockr_user = models.ForeignKey(MockrUser)
     mock = models.ForeignKey(Mock)
+
+
 
 
 
