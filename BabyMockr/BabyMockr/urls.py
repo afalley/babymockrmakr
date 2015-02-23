@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-from Mockr.api.views import ListMockrUsers, ListMocks
+from Mockr.api.views import ListMockrUsers, ListMocks, ListBabyNames, ListMockRatings, ListFavorites
 
 urlpatterns = patterns('',
     # Examples:
@@ -12,4 +12,8 @@ urlpatterns = patterns('',
     url(r'^MockrUser/', ListMockrUsers.as_view()),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^Mocks/', ListMocks().as_view()),
+    url(r'^BabyName', ListBabyNames.as_view()),
+    url(r'^MockRatings', ListMockRatings.as_view()),
+    url(r'^ListFavorites',ListFavorites.as_view()),
+
 )
