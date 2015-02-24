@@ -13,13 +13,9 @@ class MockrUserSerializer(serializers.Serializer):
 
     class Meta:
         model = MockrUser
-        fields = ('mockr_username')
+        fields = ('mockr_user',)
 
-class BabyNameSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = BabyName
-        fields = ('name', 'rank', 'mockr_user')
 class BabyNameSerializer(serializers.ModelSerializer):
 
     class Meta:

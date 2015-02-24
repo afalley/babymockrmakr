@@ -36,7 +36,7 @@ AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
 
 
 """
-AUTH_USER_MODEL = 'Mockr.MockrUser'
+# AUTH_USER_MODEL = 'Mockr.MockrUser'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/

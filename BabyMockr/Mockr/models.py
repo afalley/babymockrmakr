@@ -1,22 +1,34 @@
 from django.contrib.auth.tests.test_context_processors import MockUser
 from django.db import models
-from django.contrib.auth.models import AbstractUser, AbstractBaseUser
+from django.contrib.auth.models import AbstractUser, AbstractBaseUser, User
 
 
 # Create your models here.
-
-class MockrUser(AbstractUser):
-    mockr_username = models.CharField(max_length=50, blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    is_Mockr = models.BooleanField(default=False)
-    is_facebook = models.BooleanField(default=False)
+class MockrUser(models.Model):
+    mockr_user = models.ForeignKey(User)
+    is_facebook_user = models.BooleanField(default=False)
+    is_mockr = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return self.email
+        return self.mockr_user.username
 
-    def get_full_name(self):
-        return ' '.join([self.first_name, self.last_name])
+
+
+
+# class MockrUser(AbstractBaseUser):
+#     mockr_username = models.CharField(max_length=50, blank=True, null=True, unique=True)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#
+#     USERNAME_FIELD = 'mockr_username'
+#     is_active = True
+#     is_Mockr = models.BooleanField(default=False)
+#     is_facebook = models.BooleanField(default=False)
+#
+#     def __unicode__(self):
+#         return self.mockr_username or ''
+#
+#      def get_full_name(self):
+#          return ' '.join([self.first_name, self.last_name])
 
 
 class BabyName(models.Model):
