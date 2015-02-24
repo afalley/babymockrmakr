@@ -33,7 +33,7 @@ class MockrUser(models.Model):
 
 class BabyName(models.Model):
     name = models.CharField(max_length=50)
-    rank = models.IntegerField(default=0, blank=True)
+    rank = models.IntegerField(default=0, blank=True, null=True)
     mockr_user = models.ForeignKey(MockrUser, related_name='mkuser')
 
     def __unicode__(self):

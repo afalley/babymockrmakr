@@ -10,21 +10,19 @@
 
     <!-- Example of how to use ng-include -->
     
+    <hr>
 
-   
-
-    <!-- Example of how to instantiate a controller from a template -->
     <div ng-controller="DemoController">
-     
-      <!-- Let's only show the top 10 Tivix repositories. -->
-     <center>
-      <h1> Mocks </h1>
-      <h3><span ng-repeat="item in items | limitTo:10 | orderBy:name">{{item.name}} - {{item.mock_text}}<br></span>
-      <span ng-if="!items.length">No items right now.</span>
-      <span ng-if="error">There was a problem retrieving these repositories from the API.</span></h3>
-    </div></center>
+      <h1> Names </h1>
+      <p ng-repeat="babyname in babynames | limitTo:50">{{babyname.name}} ({{babyname.rank}}, {{babyname.mockr_user}})</p>
+      <!--<p ng-if="!items.length">No items right now.</p>-->
+      <p ng-if="error">There was a problem retrieving these repositories from the API.</p>
+      <p>Add babyname:<br>
+      <input type="text" ng-model="new_babyname">
+      <button ng-click="add_babyname()">Add</button></p>
+    </div>
     <!-- Here's another controller we'll use on this page. -->
-
+    <hr>
    
    
       
@@ -34,7 +32,7 @@
 
     </div>
 
-
+    <hr>
 
     <!-- The ng-view block denotes where all route related content/controllers will be loaded. -->
     <div ng-view=""></div>
@@ -46,12 +44,10 @@
     <script src="scripts/app.js"></script>
     <!-- Include all supporting controllers, services, directives, and filters -->
     <script src="scripts/controllers/demo.js"></script>
-    
     <script src="scripts/services/demo.js"></script>
     <script src="scripts/services/tools.js"></script>
     <!-- Include controllers, services, etc. to support routes -->
     <script src="scripts/routes.js"></script>
-    
     <!-- End of script includes. -->
 
 </body>
