@@ -9,7 +9,7 @@ from rest_framework import serializers
 from Mockr.models import MockrUser, BabyName, Mock, Favorite
 
 
-class MockrUserSerializer(serializers.Serializer):
+class MockrUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MockrUser
